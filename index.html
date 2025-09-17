@@ -454,6 +454,141 @@
             color: var(--text-dark);
         }
 
+        /* Advantages Section */
+        .advantages {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+            position: relative;
+        }
+
+        .advantages-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .advantages h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-pink);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .advantage-highlight {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            background: var(--soft-pink);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        .advantage-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Coming Soon Features */
+        .coming-soon {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .coming-soon h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .coming-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .feature-badge {
+            background: var(--gradient-soft);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            color: var(--text-dark);
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .feature-badge:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-badge.savings {
+            background: var(--gradient-main);
+            color: white;
+            border-color: var(--primary-pink);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         /* Features Section */
         .features {
             padding: 6rem 2rem;
@@ -596,6 +731,36 @@
             .video-section-title {
                 font-size: 1.1rem;
             }
+
+            .advantages {
+                padding: 4rem 1rem;
+            }
+
+            .advantages h2 {
+                font-size: 2rem;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .advantage-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .coming-soon {
+                padding: 2rem 1.5rem;
+            }
+
+            .coming-features {
+                gap: 0.8rem;
+            }
+
+            .feature-badge {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Loading Animation */
@@ -645,11 +810,11 @@
     <section class="hero">
         <div class="hero-content">
             <h1>당신의 미래 아기를<br>AI로 미리 만나보세요</h1>
-            <p class="subtitle">🤱 부모의 사진과 초음파로 예측하는 마법 같은 순간</p>
+            <p class="subtitle">💕 엄마의 사랑과 아빠의 따뜻함이 담긴 사랑스러운 우리 아기</p>
             <p class="description">
-                최첨단 AI 기술로 부모님의 얼굴 특징과 초음파 사진을 분석하여<br>
-                미래 아기의 모습을 더욱 정확하고 사실적으로 예측해드립니다.<br>
-                성장 과정별 모습은 물론, 초음파에서 실제 얼굴까지 확인하세요!
+                부모님의 사랑스러운 모습과 초음파 속 아기의 신비로운 모습을 한데 모아<br>
+                <strong>세상에서 가장 소중한 생명</strong>의 첫 모습을 미리 만나보세요 ✨<br>
+                엄마 아빠의 가장 이쁜 모습만 담은 특별한 우리 아기를 만나세요!
             </p>
 
             <!-- Email Collection Form -->
@@ -743,6 +908,53 @@
                 <div class="highlight-item">
                     <i class="fas fa-heart"></i>
                     <span>결과 비교 & 확인</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages">
+        <div class="advantages-container">
+            <h2>✨ 왜 Meet Your Baby를 선택해야 할까요?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">💰</div>
+                    <h3>합리적 가격</h3>
+                    <p class="advantage-highlight">장당 500원 (₩500 / $0.4)</p>
+                    <p>다른 서비스 대비 <strong>1% 수준의 가격</strong>으로 경제적 부담 없이 이용하세요</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>정교한 기술력</h3>
+                    <p class="advantage-highlight">구글 최신 AI 모델</p>
+                    <p><strong>최첨단 알고리즘</strong>을 적용하여 더욱 정밀한 예측 결과를 제공합니다</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎨</div>
+                    <h3>완벽한 정확도</h3>
+                    <p class="advantage-highlight">100% 얼굴 특성 반영</p>
+                    <p>아기의 <strong>모든 얼굴 특징</strong>을 완벽하게 분석하고 재현합니다</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚖️</div>
+                    <h3>맞춤형 조절</h3>
+                    <p class="advantage-highlight">엄마 아빠 닮음 비율</p>
+                    <p><strong>부모님의 이쁜 부위만</strong> 선택해서 비율로 적용 가능합니다</p>
+                </div>
+            </div>
+
+            <!-- Coming Soon Features -->
+            <div class="coming-soon">
+                <h3>🚀 곧 추가될 신기능들</h3>
+                <div class="coming-features">
+                    <div class="feature-badge">👶 아기 얼굴 관상</div>
+                    <div class="feature-badge">📝 얼굴에 어울리는 이름 추천</div>
+                    <div class="feature-badge">📸 아기 AI 스튜디오 촬영</div>
+                    <div class="feature-badge savings">💫 기존 세팅비 100만원 → <strong>0원</strong></div>
                 </div>
             </div>
         </div>
