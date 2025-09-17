@@ -304,14 +304,42 @@
             margin-right: auto;
         }
 
+        /* Videos Grid Layout */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
         .video-wrapper {
             position: relative;
             background: white;
             border-radius: 20px;
             padding: 1.5rem;
             box-shadow: var(--shadow-xl);
-            margin-bottom: 3rem;
             overflow: hidden;
+        }
+
+        .video-section-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-soft);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .main-video .video-section-title {
+            background: linear-gradient(135deg, #FFE1EC 0%, #E3F2FD 100%);
+        }
+
+        .ultrasound-video .video-section-title {
+            background: linear-gradient(135deg, #E3F2FD 0%, #FFE1EC 100%);
         }
 
         .video-wrapper::before {
@@ -326,10 +354,10 @@
             z-index: 1;
         }
 
-        #demoVideo {
+        .video-wrapper video {
             width: 100%;
-            max-width: 900px;
-            height: auto;
+            height: 400px;
+            object-fit: cover;
             border-radius: 15px;
             position: relative;
             z-index: 2;
@@ -519,6 +547,25 @@
             opacity: 0;
         }
 
+        /* Desktop: Side by side videos */
+        @media (min-width: 900px) {
+            .videos-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .video-wrapper video {
+                height: 350px;
+            }
+        }
+
+        /* Large Desktop: Larger videos */
+        @media (min-width: 1200px) {
+            .video-wrapper video {
+                height: 450px;
+            }
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -540,6 +587,14 @@
 
             .nav {
                 padding: 0 1rem;
+            }
+
+            .video-demo {
+                padding: 4rem 1rem;
+            }
+
+            .video-section-title {
+                font-size: 1.1rem;
             }
         }
 
@@ -590,11 +645,11 @@
     <section class="hero">
         <div class="hero-content">
             <h1>당신의 미래 아기를<br>AI로 미리 만나보세요</h1>
-            <p class="subtitle">🤱 부모의 사진으로 예측하는 마법 같은 순간</p>
+            <p class="subtitle">🤱 부모의 사진과 초음파로 예측하는 마법 같은 순간</p>
             <p class="description">
-                최첨단 AI 기술로 부모님의 얼굴 특징을 분석하여<br>
-                미래 아기의 모습을 사실적으로 예측해드립니다.<br>
-                성장 과정별 모습까지 확인할 수 있어요!
+                최첨단 AI 기술로 부모님의 얼굴 특징과 초음파 사진을 분석하여<br>
+                미래 아기의 모습을 더욱 정확하고 사실적으로 예측해드립니다.<br>
+                성장 과정별 모습은 물론, 초음파에서 실제 얼굴까지 확인하세요!
             </p>
 
             <!-- Email Collection Form -->
@@ -623,9 +678,13 @@
     <section class="video-demo">
         <div class="video-container">
             <h2 class="video-title">🎬 실제 작동 모습을 확인해보세요!</h2>
-            <p class="video-subtitle">AI가 부모님의 사진으로 아기 얼굴을 예측하는 과정을 직접 보실 수 있어요</p>
+            <p class="video-subtitle">AI가 부모님의 사진으로 아기 얼굴을 예측하는 과정과 초음파 사진 속 아기의 모습을 직접 보실 수 있어요</p>
 
-            <div class="video-wrapper">
+            <!-- Video Grid Container -->
+            <div class="videos-grid">
+                <!-- Main Demo Video -->
+                <div class="video-wrapper main-video">
+                    <h3 class="video-section-title">🤖 AI 얼굴 예측 데모</h3>
                 <video
                     id="demoVideo"
                     controls
@@ -642,12 +701,34 @@
                     </div>
                     <p class="play-text">클릭하여 데모 영상 시청하기</p>
                 </div>
+                </div>
+
+                <!-- Ultrasound Video -->
+                <div class="video-wrapper ultrasound-video">
+                    <h3 class="video-section-title">👶 초음파 사진 속 아기</h3>
+                    <video
+                        id="ultrasoundVideo"
+                        controls
+                        poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmlld0JveD0iMCAwIDgwMCA0NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjZ3JhZGllbnQyKSIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjIyNSIgcj0iNDAiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuOCIvPjxwYXRoIGQ9Ik0zODAgMjEwTDM5MCAyMDBMNDIwIDIyNUwzOTAgMjUwTDM4MCAyNDBWMjEwWiIgZmlsbD0iIzRGQzNGNyIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQyIiB4MT0iMCIgeTE9IjAiIHgyPSI4MDAiIHkyPSI0NTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRTNGMkZEIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZFMUVDIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHRleHQgeD0iNDAwIiB5PSIzMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2QjcyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCI+7LSo7J2M7YyM7IKs7KeEIOyViOq4sCDslYTquLA8L3RleHQ+PC9zdmc+"
+                        preload="metadata">
+                        <source src="초음파사진_baby.mp4" type="video/mp4">
+                        죄송합니다. 브라우저에서 동영상을 지원하지 않습니다.
+                    </video>
+
+                    <!-- Play button overlay -->
+                    <div class="play-overlay" id="ultrasoundPlayOverlay">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <p class="play-text">초음파 영상 보기</p>
+                    </div>
+                </div>
             </div>
 
             <div class="video-highlights">
                 <div class="highlight-item">
                     <i class="fas fa-upload"></i>
-                    <span>부모님 사진 업로드</span>
+                    <span>부모님 사진 & 초음파 업로드</span>
                 </div>
                 <div class="highlight-item">
                     <i class="fas fa-sliders-h"></i>
@@ -658,8 +739,12 @@
                     <span>AI 얼굴 생성</span>
                 </div>
                 <div class="highlight-item">
+                    <i class="fas fa-baby"></i>
+                    <span>초음파 실제 얼굴 생성</span>
+                </div>
+                <div class="highlight-item">
                     <i class="fas fa-heart"></i>
-                    <span>결과 확인</span>
+                    <span>결과 비교 & 확인</span>
                 </div>
             </div>
         </div>
@@ -675,7 +760,7 @@
                         <i class="fas fa-magic"></i>
                     </div>
                     <h3>AI 얼굴 예측</h3>
-                    <p>최신 AI 기술로 부모의 얼굴 특징을 분석하여 아기 얼굴을 정확하게 예측합니다</p>
+                    <p>부모의 얼굴 특징과 초음파 사진을 동시에 분석하여 더욱 정확한 아기 얼굴을 예측합니다</p>
                 </div>
 
                 <div class="feature-card">
@@ -684,6 +769,14 @@
                     </div>
                     <h3>성장 과정 시뮬레이션</h3>
                     <p>신생아부터 5살까지 나이별 모습을 확인하며 아이의 성장 과정을 미리 볼 수 있어요</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>초음파 얼굴 생성</h3>
+                    <p>초음파 사진에서 아기의 실제 얼굴 모습을 추출하여 더욱 사실적인 이미지를 생성합니다</p>
                 </div>
 
                 <div class="feature-card">
@@ -798,7 +891,10 @@
         function setupVideoTracking() {
             const video = document.getElementById('demoVideo');
             const playOverlay = document.getElementById('playOverlay');
+            const ultrasoundVideo = document.getElementById('ultrasoundVideo');
+            const ultrasoundPlayOverlay = document.getElementById('ultrasoundPlayOverlay');
 
+            // Main demo video tracking
             if (video && playOverlay) {
                 // 플레이 오버레이 클릭
                 playOverlay.addEventListener('click', function() {
@@ -871,6 +967,84 @@
                     video.addEventListener('mouseleave', function() {
                         if (video.paused) {
                             playOverlay.style.opacity = '0';
+                        }
+                    });
+                });
+            }
+
+            // Ultrasound video tracking
+            if (ultrasoundVideo && ultrasoundPlayOverlay) {
+                // 플레이 오버레이 클릭
+                ultrasoundPlayOverlay.addEventListener('click', function() {
+                    ultrasoundVideo.play();
+                    ultrasoundPlayOverlay.style.opacity = '0';
+                    ultrasoundPlayOverlay.style.pointerEvents = 'none';
+
+                    // 분석 추적
+                    if (typeof analytics !== 'undefined') {
+                        analytics.logEvent('ultrasound_video_play_overlay_click', {
+                            timestamp: Date.now() - analytics.startTime
+                        });
+                    }
+                });
+
+                // 동영상 이벤트 추적
+                ultrasoundVideo.addEventListener('play', function() {
+                    if (typeof analytics !== 'undefined') {
+                        analytics.logEvent('ultrasound_video_play', {
+                            currentTime: ultrasoundVideo.currentTime,
+                            timeOnPage: Date.now() - analytics.startTime
+                        });
+                    }
+                });
+
+                ultrasoundVideo.addEventListener('pause', function() {
+                    if (typeof analytics !== 'undefined') {
+                        analytics.logEvent('ultrasound_video_pause', {
+                            currentTime: ultrasoundVideo.currentTime,
+                            watchedDuration: ultrasoundVideo.currentTime
+                        });
+                    }
+                });
+
+                ultrasoundVideo.addEventListener('ended', function() {
+                    if (typeof analytics !== 'undefined') {
+                        analytics.logEvent('ultrasound_video_completed', {
+                            duration: ultrasoundVideo.duration,
+                            watchedDuration: ultrasoundVideo.currentTime
+                        });
+                    }
+                });
+
+                // 시간별 시청 추적 (25%, 50%, 75%, 100%)
+                ultrasoundVideo.addEventListener('timeupdate', function() {
+                    if (ultrasoundVideo.duration > 0) {
+                        const progress = Math.round((ultrasoundVideo.currentTime / ultrasoundVideo.duration) * 100);
+
+                        if ([25, 50, 75].includes(progress)) {
+                            if (typeof analytics !== 'undefined') {
+                                analytics.logEvent('ultrasound_video_progress', {
+                                    progress: progress,
+                                    currentTime: ultrasoundVideo.currentTime,
+                                    duration: ultrasoundVideo.duration
+                                });
+                            }
+                        }
+                    }
+                });
+
+                // 동영상 로드 완료 시 오버레이 표시
+                ultrasoundVideo.addEventListener('loadeddata', function() {
+                    ultrasoundPlayOverlay.style.opacity = '0';
+                    ultrasoundVideo.addEventListener('mouseenter', function() {
+                        if (ultrasoundVideo.paused) {
+                            ultrasoundPlayOverlay.style.opacity = '1';
+                        }
+                    });
+
+                    ultrasoundVideo.addEventListener('mouseleave', function() {
+                        if (ultrasoundVideo.paused) {
+                            ultrasoundPlayOverlay.style.opacity = '0';
                         }
                     });
                 });
