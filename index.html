@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet Your Baby - AI 아기 얼굴 예측 서비스</title>
-    <meta name="description" content="AI가 예측하는 미래 아기의 모습을 만나보세요. 부모의 사진으로 아기 얼굴을 미리 볼 수 있는 혁신적인 서비스">
+    <title>Meet Your Baby - AI Baby Face Prediction Service</title>
+    <meta name="description" content="Meet your future baby's face predicted by AI. Revolutionary service to preview your baby's face using parents' photos">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Meet Your Baby - AI 아기 얼굴 예측">
-    <meta property="og:description" content="AI가 예측하는 미래 아기의 모습을 만나보세요">
+    <meta property="og:title" content="Meet Your Baby - AI Baby Face Prediction">
+    <meta property="og:description" content="Meet your future baby's face predicted by AI">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/FFB6D3/FFFFFF?text=Meet+Your+Baby">
 
@@ -112,8 +112,81 @@
         }
 
         .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .coming-soon {
             color: white;
             font-weight: 500;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            min-width: 150px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.active {
+            display: block;
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .language-option:hover {
+            background: var(--soft-pink);
+        }
+
+        .language-option.active {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        .flag {
+            font-size: 1.2rem;
         }
 
         /* Hero Section */
@@ -801,7 +874,36 @@
                 Meet Your Baby
             </a>
             <div class="nav-right">
-                Coming Soon
+                <div class="coming-soon" data-i18n="nav.coming-soon">Coming Soon</div>
+                <div class="language-selector">
+                    <button class="language-btn" id="languageBtn">
+                        <span class="flag">🇺🇸</span>
+                        <span data-i18n="nav.language">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option active" data-lang="en">
+                            <span class="flag">🇺🇸</span>
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="ko">
+                            <span class="flag">🇰🇷</span>
+                            <span>한국어</span>
+                        </div>
+                        <div class="language-option" data-lang="zh">
+                            <span class="flag">🇨🇳</span>
+                            <span>中文</span>
+                        </div>
+                        <div class="language-option" data-lang="ja">
+                            <span class="flag">🇯🇵</span>
+                            <span>日本語</span>
+                        </div>
+                        <div class="language-option" data-lang="es">
+                            <span class="flag">🇪🇸</span>
+                            <span>Español</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -809,31 +911,31 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>당신의 미래 아기를<br>AI로 미리 만나보세요</h1>
-            <p class="subtitle">💕 엄마의 사랑과 아빠의 따뜻함이 담긴 사랑스러운 우리 아기</p>
-            <p class="description">
-                부모님의 사랑스러운 모습과 초음파 속 아기의 신비로운 모습을 한데 모아<br>
-                <strong>세상에서 가장 소중한 생명</strong>의 첫 모습을 미리 만나보세요 ✨<br>
-                엄마 아빠의 가장 이쁜 모습만 담은 특별한 우리 아기를 만나세요!
+            <h1 data-i18n="hero.title">Meet Your Future Baby<br>with AI Technology</h1>
+            <p class="subtitle" data-i18n="hero.subtitle">💕 Your lovely baby filled with mom's love and dad's warmth</p>
+            <p class="description" data-i18n="hero.description">
+                Combining your loving features with baby's mysterious appearance from ultrasound<br>
+                Preview the first glimpse of <strong>the most precious life in the world</strong> ✨<br>
+                Meet your special baby featuring only the most beautiful traits from mom and dad!
             </p>
 
             <!-- Email Collection Form -->
             <form class="email-form" id="emailForm">
-                <h3 class="form-title">✨ 베타 출시 알림받기</h3>
-                <p class="form-subtitle">서비스 오픈 시 가장 먼저 알려드릴게요</p>
+                <h3 class="form-title" data-i18n="form.title">✨ Get Beta Launch Notification</h3>
+                <p class="form-subtitle" data-i18n="form.subtitle">Be the first to know when our service launches</p>
 
                 <div class="input-group">
                     <input type="email" id="email" name="email" required placeholder=" ">
-                    <label for="email">이메일 주소</label>
+                    <label for="email" data-i18n="form.email">Email Address</label>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="btn-text">무료로 알림 받기</span>
+                    <span class="btn-text" data-i18n="form.submit">Get Free Notifications</span>
                     <div class="loading-spinner"></div>
                 </button>
 
                 <div class="success-message" id="successMessage">
-                    🎉 등록이 완료되었습니다! 출시 소식을 가장 먼저 알려드릴게요.
+                    <span data-i18n="form.success">🎉 Registration completed! We'll notify you first about the launch.</span>
                 </div>
             </form>
         </div>
@@ -842,8 +944,8 @@
     <!-- Video Demo Section -->
     <section class="video-demo">
         <div class="video-container">
-            <h2 class="video-title">🎬 실제 작동 모습을 확인해보세요!</h2>
-            <p class="video-subtitle">AI가 부모님의 사진으로 아기 얼굴을 예측하는 과정과 초음파 사진 속 아기의 모습을 직접 보실 수 있어요</p>
+            <h2 class="video-title" data-i18n="video.title">🎬 See How It Actually Works!</h2>
+            <p class="video-subtitle">Watch AI predict baby faces from parents' photos and see baby's appearance from ultrasound images</p>
 
             <!-- Video Grid Container -->
             <div class="videos-grid">
@@ -916,32 +1018,32 @@
     <!-- Advantages Section -->
     <section class="advantages">
         <div class="advantages-container">
-            <h2>✨ 왜 Meet Your Baby를 선택해야 할까요?</h2>
+            <h2 data-i18n="advantages.title">✨ Why Choose Meet Your Baby?</h2>
             <div class="advantages-grid">
                 <div class="advantage-card">
                     <div class="advantage-icon">💰</div>
-                    <h3>합리적 가격</h3>
+                    <h3>Affordable Price</h3>
                     <p class="advantage-highlight">장당 500원 (₩500 / $0.4)</p>
                     <p>다른 서비스 대비 <strong>1% 수준의 가격</strong>으로 경제적 부담 없이 이용하세요</p>
                 </div>
 
                 <div class="advantage-card">
                     <div class="advantage-icon">🎯</div>
-                    <h3>정교한 기술력</h3>
+                    <h3>Advanced Technology</h3>
                     <p class="advantage-highlight">구글 최신 AI 모델</p>
                     <p><strong>최첨단 알고리즘</strong>을 적용하여 더욱 정밀한 예측 결과를 제공합니다</p>
                 </div>
 
                 <div class="advantage-card">
                     <div class="advantage-icon">🎨</div>
-                    <h3>완벽한 정확도</h3>
+                    <h3>Perfect Accuracy</h3>
                     <p class="advantage-highlight">100% 얼굴 특성 반영</p>
                     <p>아기의 <strong>모든 얼굴 특징</strong>을 완벽하게 분석하고 재현합니다</p>
                 </div>
 
                 <div class="advantage-card">
                     <div class="advantage-icon">⚖️</div>
-                    <h3>맞춤형 조절</h3>
+                    <h3>Custom Control</h3>
                     <p class="advantage-highlight">엄마 아빠 닮음 비율</p>
                     <p><strong>부모님의 이쁜 부위만</strong> 선택해서 비율로 적용 가능합니다</p>
                 </div>
@@ -949,7 +1051,7 @@
 
             <!-- Coming Soon Features -->
             <div class="coming-soon">
-                <h3>🚀 곧 추가될 신기능들</h3>
+                <h3>🚀 Coming Soon Features</h3>
                 <div class="coming-features">
                     <div class="feature-badge">👶 아기 얼굴 관상</div>
                     <div class="feature-badge">📝 얼굴에 어울리는 이름 추천</div>
@@ -1009,6 +1111,266 @@
     <div class="visitor-info" id="visitorInfo"></div>
 
     <script>
+        // Language translations
+        const translations = {
+            en: {
+                'nav.coming-soon': 'Coming Soon',
+                'nav.language': 'EN',
+                'hero.title': 'Meet Your Future Baby<br>with AI Technology',
+                'hero.subtitle': '💕 Your lovely baby filled with mom\'s love and dad\'s warmth',
+                'hero.description': 'Combining your loving features with baby\'s mysterious appearance from ultrasound<br>Preview the first glimpse of <strong>the most precious life in the world</strong> ✨<br>Meet your special baby featuring only the most beautiful traits from mom and dad!',
+                'form.title': '✨ Get Beta Launch Notification',
+                'form.subtitle': 'Be the first to know when our service launches',
+                'form.email': 'Email Address',
+                'form.submit': 'Get Free Notifications',
+                'form.success': '🎉 Registration completed! We\'ll notify you first about the launch.',
+                'video.title': '🎬 See How It Actually Works!',
+                'video.subtitle': 'Watch AI predict baby faces from parents\' photos and see baby\'s appearance from ultrasound images',
+                'video.demo-title': '🤖 AI Face Prediction Demo',
+                'video.ultrasound-title': '👶 Baby from Ultrasound',
+                'video.play-demo': 'Click to watch demo video',
+                'video.play-ultrasound': 'Watch ultrasound video',
+                'advantages.title': '✨ Why Choose Meet Your Baby?',
+                'advantages.price.title': 'Affordable Price',
+                'advantages.price.highlight': '$0.4 per image',
+                'advantages.price.desc': 'Only <strong>1% of competitor prices</strong> - no financial burden',
+                'advantages.tech.title': 'Advanced Technology',
+                'advantages.tech.highlight': 'Latest Google AI Model',
+                'advantages.tech.desc': 'Applying <strong>cutting-edge algorithms</strong> for more precise prediction results',
+                'advantages.accuracy.title': 'Perfect Accuracy',
+                'advantages.accuracy.highlight': '100% Facial Feature Reflection',
+                'advantages.accuracy.desc': 'Perfectly analyze and reproduce <strong>all facial characteristics</strong> of the baby',
+                'advantages.custom.title': 'Custom Control',
+                'advantages.custom.highlight': 'Mom & Dad Similarity Ratio',
+                'advantages.custom.desc': 'Select and apply only <strong>the most beautiful features</strong> from parents by ratio',
+                'coming.title': '🚀 Coming Soon Features',
+                'coming.fortune': '👶 Baby Face Fortune Reading',
+                'coming.names': '📝 Name Recommendations',
+                'coming.studio': '📸 AI Baby Studio Photography',
+                'coming.savings': '💫 Studio setup cost $10,000 → <strong>FREE</strong>',
+                'features.title': '🌟 Special Features',
+                'footer.copyright': '© Meet Your Baby. All rights reserved.'
+            },
+            ko: {
+                'nav.coming-soon': 'Coming Soon',
+                'nav.language': 'KR',
+                'hero.title': '당신의 미래 아기를<br>AI로 미리 만나보세요',
+                'hero.subtitle': '💕 엄마의 사랑과 아빠의 따뜻함이 담긴 사랑스러운 우리 아기',
+                'hero.description': '부모님의 사랑스러운 모습과 초음파 속 아기의 신비로운 모습을 한데 모아<br><strong>세상에서 가장 소중한 생명</strong>의 첫 모습을 미리 만나보세요 ✨<br>엄마 아빠의 가장 이쁜 모습만 담은 특별한 우리 아기를 만나세요!',
+                'form.title': '✨ 베타 출시 알림받기',
+                'form.subtitle': '서비스 오픈 시 가장 먼저 알려드릴게요',
+                'form.email': '이메일 주소',
+                'form.submit': '무료로 알림 받기',
+                'form.success': '🎉 등록이 완료되었습니다! 출시 소식을 가장 먼저 알려드릴게요.',
+                'video.title': '🎬 실제 작동 모습을 확인해보세요!',
+                'video.subtitle': 'AI가 부모님의 사진으로 아기 얼굴을 예측하는 과정과 초음파 사진 속 아기의 모습을 직접 보실 수 있어요',
+                'video.demo-title': '🤖 AI 얼굴 예측 데모',
+                'video.ultrasound-title': '👶 초음파 사진 속 아기',
+                'video.play-demo': '클릭하여 데모 영상 시청하기',
+                'video.play-ultrasound': '초음파 영상 보기',
+                'advantages.title': '✨ 왜 Meet Your Baby를 선택해야 할까요?',
+                'advantages.price.title': 'Affordable Price',
+                'advantages.price.highlight': '장당 500원 (₩500 / $0.4)',
+                'advantages.price.desc': '다른 서비스 대비 <strong>1% 수준의 가격</strong>으로 경제적 부담 없이 이용하세요',
+                'advantages.tech.title': 'Advanced Technology',
+                'advantages.tech.highlight': '구글 최신 AI 모델',
+                'advantages.tech.desc': '<strong>최첨단 알고리즘</strong>을 적용하여 더욱 정밀한 예측 결과를 제공합니다',
+                'advantages.accuracy.title': 'Perfect Accuracy',
+                'advantages.accuracy.highlight': '100% 얼굴 특성 반영',
+                'advantages.accuracy.desc': '아기의 <strong>모든 얼굴 특징</strong>을 완벽하게 분석하고 재현합니다',
+                'advantages.custom.title': 'Custom Control',
+                'advantages.custom.highlight': '엄마 아빠 닮음 비율',
+                'advantages.custom.desc': '<strong>부모님의 이쁜 부위만</strong> 선택해서 비율로 적용 가능합니다',
+                'coming.title': '🚀 Coming Soon Features',
+                'coming.fortune': '👶 아기 얼굴 관상',
+                'coming.names': '📝 얼굴에 어울리는 이름 추천',
+                'coming.studio': '📸 아기 AI 스튜디오 촬영',
+                'coming.savings': '💫 기존 세팅비 100만원 → <strong>0원</strong>',
+                'features.title': '🌟 특별한 기능들',
+                'footer.copyright': '© Meet Your Baby. All rights reserved.'
+            },
+            zh: {
+                'nav.coming-soon': '即将推出',
+                'nav.language': 'CN',
+                'hero.title': '用AI技术<br>提前见到您未来的宝宝',
+                'hero.subtitle': '💕 充满妈妈爱意与爸爸温暖的可爱宝宝',
+                'hero.description': '结合父母的美好容貌与超声波中宝宝的神秘模样<br>提前预览<strong>世界上最珍贵生命</strong>的初次模样 ✨<br>邂逅只承继父母最美特征的特别宝宝！',
+                'form.title': '✨ 获取内测发布通知',
+                'form.subtitle': '服务上线时第一时间通知您',
+                'form.email': '邮箱地址',
+                'form.submit': '免费获取通知',
+                'form.success': '🎉 注册完成！我们将第一时间通知您发布消息。',
+                'video.title': '🎬 查看实际运作过程！',
+                'video.subtitle': '观看AI如何从父母照片预测宝宝面容，以及从超声波图像中看到宝宝的模样',
+                'video.demo-title': '🤖 AI面部预测演示',
+                'video.ultrasound-title': '👶 超声波中的宝宝',
+                'video.play-demo': '点击观看演示视频',
+                'video.play-ultrasound': '观看超声波视频',
+                'advantages.title': '✨ 为什么选择Meet Your Baby？',
+                'advantages.price.title': '合理价格',
+                'advantages.price.highlight': '每张$0.4',
+                'advantages.price.desc': '仅为竞争对手<strong>1%的价格</strong> - 无经济负担',
+                'advantages.tech.title': '先进技术',
+                'advantages.tech.highlight': '最新谷歌AI模型',
+                'advantages.tech.desc': '应用<strong>前沿算法</strong>提供更精确的预测结果',
+                'advantages.accuracy.title': '完美准确度',
+                'advantages.accuracy.highlight': '100%面部特征反映',
+                'advantages.accuracy.desc': '完美分析和再现宝宝的<strong>所有面部特征</strong>',
+                'advantages.custom.title': '个性化控制',
+                'advantages.custom.highlight': '父母相似度比例',
+                'advantages.custom.desc': '可按比例选择应用<strong>父母最美的特征</strong>',
+                'coming.title': '🚀 即将推出的功能',
+                'coming.fortune': '👶 宝宝面相解读',
+                'coming.names': '📝 姓名推荐',
+                'coming.studio': '📸 AI宝宝摄影棚',
+                'coming.savings': '💫 摄影棚设置费$10,000 → <strong>免费</strong>',
+                'features.title': '🌟 特色功能',
+                'footer.copyright': '© Meet Your Baby. 版权所有。'
+            },
+            ja: {
+                'nav.coming-soon': 'Coming Soon',
+                'nav.language': 'JP',
+                'hero.title': 'AI技術で<br>未来の赤ちゃんに会いましょう',
+                'hero.subtitle': '💕 ママの愛とパパの温かさが込められた愛らしい赤ちゃん',
+                'hero.description': 'ご両親の愛らしい姿と超音波の中の赤ちゃんの神秘的な姿を組み合わせて<br><strong>世界で最も大切な命</strong>の最初の姿を先に見てみましょう ✨<br>ママとパパの最も美しい部分だけを持つ特別な赤ちゃんに会いましょう！',
+                'form.title': '✨ ベータ版リリース通知を受け取る',
+                'form.subtitle': 'サービス開始時に最初にお知らせします',
+                'form.email': 'メールアドレス',
+                'form.submit': '無料で通知を受け取る',
+                'form.success': '🎉 登録が完了しました！リリースのお知らせを最初にお送りします。',
+                'video.title': '🎬 実際の動作をご確認ください！',
+                'video.subtitle': 'AIが両親の写真から赤ちゃんの顔を予測する過程と、超音波写真の中の赤ちゃんの姿を直接ご覧いただけます',
+                'video.demo-title': '🤖 AI顔予測デモ',
+                'video.ultrasound-title': '👶 超音波写真の中の赤ちゃん',
+                'video.play-demo': 'クリックしてデモ動画を視聴',
+                'video.play-ultrasound': '超音波動画を見る',
+                'advantages.title': '✨ なぜMeet Your Babyを選ぶべきか？',
+                'advantages.price.title': '手頃な価格',
+                'advantages.price.highlight': '1枚$0.4',
+                'advantages.price.desc': '競合他社の<strong>1%の価格</strong> - 経済的負担なし',
+                'advantages.tech.title': '先進技術',
+                'advantages.tech.highlight': '最新GoogleAIモデル',
+                'advantages.tech.desc': '<strong>最先端アルゴリズム</strong>を適用してより精密な予測結果を提供',
+                'advantages.accuracy.title': '完璧な精度',
+                'advantages.accuracy.highlight': '100%顔特徴反映',
+                'advantages.accuracy.desc': '赤ちゃんの<strong>すべての顔特徴</strong>を完璧に分析・再現',
+                'advantages.custom.title': 'カスタム制御',
+                'advantages.custom.highlight': 'ママ・パパ似顔比率',
+                'advantages.custom.desc': '<strong>両親の最も美しい部分だけ</strong>を選択して比率で適用可能',
+                'coming.title': '🚀 近日追加予定の機能',
+                'coming.fortune': '👶 赤ちゃん顔相占い',
+                'coming.names': '📝 名前推奨',
+                'coming.studio': '📸 AI赤ちゃんスタジオ撮影',
+                'coming.savings': '💫 スタジオ設定費$10,000 → <strong>無料</strong>',
+                'features.title': '🌟 特別な機能',
+                'footer.copyright': '© Meet Your Baby. 全権利保有。'
+            },
+            es: {
+                'nav.coming-soon': 'Próximamente',
+                'nav.language': 'ES',
+                'hero.title': 'Conoce a tu futuro bebé<br>con tecnología AI',
+                'hero.subtitle': '💕 Tu adorable bebé lleno del amor de mamá y la calidez de papá',
+                'hero.description': 'Combinando las características amorosas de los padres con la apariencia misteriosa del bebé desde el ultrasonido<br>Previsualiza el primer vistazo de <strong>la vida más preciosa del mundo</strong> ✨<br>¡Conoce a tu bebé especial con solo los rasgos más hermosos de mamá y papá!',
+                'form.title': '✨ Recibir notificación de lanzamiento beta',
+                'form.subtitle': 'Sé el primero en saber cuando se lance nuestro servicio',
+                'form.email': 'Dirección de correo',
+                'form.submit': 'Recibir notificaciones gratis',
+                'form.success': '🎉 ¡Registro completado! Te notificaremos primero sobre el lanzamiento.',
+                'video.title': '¡🎬 Ve cómo funciona realmente!',
+                'video.subtitle': 'Observa cómo la AI predice caras de bebés desde fotos de los padres y ve la apariencia del bebé desde imágenes de ultrasonido',
+                'video.demo-title': '🤖 Demo de predicción facial AI',
+                'video.ultrasound-title': '👶 Bebé desde ultrasonido',
+                'video.play-demo': 'Clic para ver video demo',
+                'video.play-ultrasound': 'Ver video de ultrasonido',
+                'advantages.title': '✨ ¿Por qué elegir Meet Your Baby?',
+                'advantages.price.title': 'Precio asequible',
+                'advantages.price.highlight': '$0.4 por imagen',
+                'advantages.price.desc': 'Solo <strong>1% del precio de competidores</strong> - sin carga financiera',
+                'advantages.tech.title': 'Tecnología avanzada',
+                'advantages.tech.highlight': 'Último modelo AI de Google',
+                'advantages.tech.desc': 'Aplicando <strong>algoritmos de vanguardia</strong> para resultados de predicción más precisos',
+                'advantages.accuracy.title': 'Precisión perfecta',
+                'advantages.accuracy.highlight': '100% reflexión de características faciales',
+                'advantages.accuracy.desc': 'Analizar y reproducir perfectamente <strong>todas las características faciales</strong> del bebé',
+                'advantages.custom.title': 'Control personalizado',
+                'advantages.custom.highlight': 'Ratio de similitud mamá y papá',
+                'advantages.custom.desc': 'Seleccionar y aplicar solo <strong>las características más hermosas</strong> de los padres por ratio',
+                'coming.title': '🚀 Funciones próximamente',
+                'coming.fortune': '👶 Lectura facial del bebé',
+                'coming.names': '📝 Recomendaciones de nombres',
+                'coming.studio': '📸 Fotografía AI estudio bebé',
+                'coming.savings': '💫 Costo de estudio $10,000 → <strong>GRATIS</strong>',
+                'features.title': '🌟 Características especiales',
+                'footer.copyright': '© Meet Your Baby. Todos los derechos reservados.'
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Language switching function
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update language button
+            const flags = {
+                en: '🇺🇸',
+                ko: '🇰🇷',
+                zh: '🇨🇳',
+                ja: '🇯🇵',
+                es: '🇪🇸'
+            };
+
+            const langCodes = {
+                en: 'EN',
+                ko: 'KR',
+                zh: 'CN',
+                ja: 'JP',
+                es: 'ES'
+            };
+
+            document.querySelector('#languageBtn .flag').textContent = flags[lang];
+            document.querySelector('#languageBtn [data-i18n="nav.language"]').textContent = langCodes[lang];
+
+            // Update active option
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === lang) {
+                    option.classList.add('active');
+                }
+            });
+
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('active');
+
+            // Save language preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Initialize language from localStorage or browser language
+        function initializeLanguage() {
+            const savedLang = localStorage.getItem('preferred-language');
+            const browserLang = navigator.language.slice(0, 2);
+            const supportedLangs = ['en', 'ko', 'zh', 'ja', 'es'];
+
+            let defaultLang = 'en';
+            if (savedLang && supportedLangs.includes(savedLang)) {
+                defaultLang = savedLang;
+            } else if (supportedLangs.includes(browserLang)) {
+                defaultLang = browserLang;
+            }
+
+            switchLanguage(defaultLang);
+        }
+
         // EmailJS 초기화
         (function(){
             emailjs.init("LskYXC4NfFvgvIXJx"); // EmailJS 공개 키 설정 완료
@@ -1262,6 +1624,28 @@
 
         // 페이지 로드 시 방문자 추적
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            initializeLanguage();
+
+            // Language selector events
+            document.getElementById('languageBtn').addEventListener('click', function() {
+                document.getElementById('languageDropdown').classList.toggle('active');
+            });
+
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-selector')) {
+                    document.getElementById('languageDropdown').classList.remove('active');
+                }
+            });
+
             trackVisitor();
             setupVideoTracking();
 
